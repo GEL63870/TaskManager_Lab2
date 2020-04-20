@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Lab2_257160_TaskManager</string>
+    <string name="task_title">Task Title</string>
+    <string name="task_descriptions">Task Descriptions</string>
+    <string name="add_task_button">Add Task</string>
+    <string name="remove_task_button">Remove task</string>
+
+    <string-array name="task_names">
+        <item>Todo</item>
+        <item>Email</item>
+        <item>Phone</item>
+        <item>Meeting</item>
+        <item>Loutres</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>This Todo description</item>
+        <item>This Email description</item>
+        <item>This Phone description</item>
+        <item>This Meeting description</item>
+        <item>Loutre powaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</item>
+    </string-array>
+
+</resources>

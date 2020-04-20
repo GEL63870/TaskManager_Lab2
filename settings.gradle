@@ -1,0 +1,2 @@
+rootProject.name='Lab2_257160_TaskManager'
+include ':app'
