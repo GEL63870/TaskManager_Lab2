@@ -15,7 +15,7 @@ public class Fragment_Task extends AppCompatActivity {
         setContentView(R.layout.task_detail);
 
         Intent intent = getIntent();
-        One_Task one_task = intent.getParcelableExtra("Example Fragment");
+        One_Task one_task = intent.getParcelableExtra("task");
 
         int imageRes = (one_task != null ? one_task.getImageResource() : 0);
         String mTitle = (one_task != null) ? one_task.getTitle() : null;
@@ -41,21 +41,3 @@ public class Fragment_Task extends AppCompatActivity {
 
     }
 }
-
-
-
-
-
-    //@Override
-    //public View onCreateView(LayoutInflater inflater, ViewGroup container , Bundle savedInstanceState) {
-        //return inflater.inflate(R.layout.task_detail, container, false);
-
-        //super.onCreate(savedInstanceState);
-        //setContentView(R.layout.task_detail);
-        //Intent intent = getIntent();
-
-        //ImageView imageview = findViewById(R.id.iconView);
-        //TextView title = findViewById(R.id.task_name_txt);
-        //TextView due_date = findViewById(R.id.due_date);
-        //TextView description_detail = findViewById(R.id.description_detail);
-        //TextView status = findViewById(R.id.status);"""
