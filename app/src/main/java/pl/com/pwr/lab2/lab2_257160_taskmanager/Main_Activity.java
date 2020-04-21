@@ -21,7 +21,6 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
     private RecyclerView.LayoutManager mLayoutManager;
 
     private Button addButton;
-    private Button detail_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +81,7 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
                 intent.putExtra("Example fragment", one_task.get(position));
 
                 startActivity(intent);
-            };
+            }
         });
 
     }
@@ -115,9 +114,6 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
             one_task.get(viewHolder.getAdapterPosition()).changeStatus("Done");
             mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
         }
-
-        ;
-
     };
 
     @Override
