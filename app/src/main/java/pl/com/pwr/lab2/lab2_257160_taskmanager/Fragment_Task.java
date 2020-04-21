@@ -17,14 +17,14 @@ public class Fragment_Task extends AppCompatActivity {
         Intent intent = getIntent();
         One_Task one_task = intent.getParcelableExtra("Example Fragment");
 
-        int imageRes = one_task.getImageResource();
-        String mTitle = one_task.getTitle();
-        String mDue_date = one_task.getDueDate();
-        String mDescription = one_task.getDescriptions();
-        String mStatus = one_task.getStatus();
+        int imageRes = (one_task != null ? one_task.getImageResource() : 0);
+        String mTitle = (one_task != null) ? one_task.getTitle() : null;
+        String mDue_date = one_task != null ? one_task.getDueDate() : null;
+        String mDescription = (one_task != null) ? one_task.getDescriptions() : null;
+        String mStatus = (one_task != null) ? one_task.getStatus() : null;
 
-        ///ImageView imageView = findViewById(R.id.iconView_detail);
-        ///imageView.setImageResource(imageRes);
+        ImageView imageView = findViewById(R.id.iconView_detail);
+        imageView.setImageResource(imageRes);
 
         TextView title = findViewById(R.id.title_detail);
         title.setText(mTitle);
