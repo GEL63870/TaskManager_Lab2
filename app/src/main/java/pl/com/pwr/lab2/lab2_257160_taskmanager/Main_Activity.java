@@ -78,6 +78,10 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
 
             @Override
             public void onDetailClick(int position) {
+                Intent intent = new Intent(Main_Activity.this, Fragment_Task.class);
+                intent.putExtra("Example fragment", one_task.get(position));
+
+                startActivity(intent);
             };
         });
 
@@ -118,10 +122,15 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
 
     @Override
     public void onItemClick(int position) {
+        Intent intent = new Intent(Main_Activity.this, Fragment_Task.class);
+        intent.putExtra("Example fragment", one_task.get(position));
 
+        startActivity(intent);
     }
 
     @Override
     public void onDetailClick(int position) {
+
     }
+
 }

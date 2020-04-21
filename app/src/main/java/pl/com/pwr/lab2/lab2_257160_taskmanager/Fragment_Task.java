@@ -2,14 +2,9 @@ package pl.com.pwr.lab2.lab2_257160_taskmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 
 public class Fragment_Task extends AppCompatActivity {
@@ -23,25 +18,25 @@ public class Fragment_Task extends AppCompatActivity {
         One_Task one_task = intent.getParcelableExtra("Example Fragment");
 
         int imageRes = one_task.getImageResource();
-        String title2 = one_task.getTitle();
-        String due_date2 = one_task.getDueDate();
-        String description2 = one_task.getDescriptions();
-        String status2 = one_task.getStatus();
+        String mTitle = one_task.getTitle();
+        String mDue_date = one_task.getDueDate();
+        String mDescription = one_task.getDescriptions();
+        String mStatus = one_task.getStatus();
 
-        ImageView imageView = findViewById(R.id.iconView_detail);
-        imageView.setImageResource(imageRes);
+        ///ImageView imageView = findViewById(R.id.iconView_detail);
+        ///imageView.setImageResource(imageRes);
 
         TextView title = findViewById(R.id.title_detail);
-        title.setText(title2);
+        title.setText(mTitle);
 
         TextView due__date = findViewById(R.id.due_date_detail);
-        due__date.setText(due_date2);
+        due__date.setText(mDue_date);
 
         TextView description = findViewById(R.id.description_detail);
-        description.setText(description2);
+        description.setText(mDescription);
 
         TextView status = findViewById(R.id.status_detail);
-        status.setText(status2);
+        status.setText(mStatus);
 
 
     }

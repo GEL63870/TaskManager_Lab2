@@ -39,9 +39,6 @@ public class One_Task implements Parcelable {
         }
     };
 
-    public void changeTitle (String text) {
-        mTitle = text;
-    }
 
     public void changeStatus (String text) {
         mStatus = text;
@@ -51,8 +48,8 @@ public class One_Task implements Parcelable {
         return mImageResource;
     }
 
-    public String getTitle() { return mTitle;
-    }
+    public String getTitle() {
+        return mTitle; }
     public String getDueDate() {
         return mDueDate;
     }

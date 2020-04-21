@@ -24,6 +24,7 @@
                 android:id="@+id/iconView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:contentDescription="@string/icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -65,7 +66,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="match_parent"
+                app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.208"
                 app:layout_constraintStart_toEndOf="@+id/due_date"
                 app:layout_constraintTop_toTopOf="parent" />
