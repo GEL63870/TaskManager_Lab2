@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".Adapter" />
         <activity android:name=".One_Task" />
+        <activity android:name=".Fragment_Task" />
 
     </application>
 

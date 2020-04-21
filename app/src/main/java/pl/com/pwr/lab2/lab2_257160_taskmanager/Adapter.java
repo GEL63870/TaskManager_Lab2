@@ -3,7 +3,7 @@ package pl.com.pwr.lab2.lab2_257160_taskmanager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +19,8 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+
+        void onDetailClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -31,6 +33,8 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
         public TextView mTitle;
         public TextView mDueDate;
         public TextView mStatus;
+        public Button mDetail_button;
+
 
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
@@ -38,20 +42,33 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
             mTitle = itemView.findViewById(R.id.task_name_txt);
             mDueDate = itemView.findViewById(R.id.due_date);
             mStatus = itemView.findViewById(R.id.status);
+           // mDetail_button = itemView.findViewById(R.id.button_details);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
+                            listener.onDetailClick(position);
 
                         }
                     }
                 }
-            });
-        }
+            }));
+
+            //mDetail_button.setOnClickListener(new View.OnClickListener() {
+               // @Override
+              //  public void onClick(View v) {
+                 //   if (listener != null) {
+                  //      int position = getAdapterPosition();
+                  //      if (position != RecyclerView.NO_POSITION) {
+                    //        listener.onDetailClick(position);
+                      //  }
+                //    }
+            //    }
+          //  });
+      }
     }
     public Adapter(ArrayList<One_Task> todo_tasks) {
         mTodo_Task = todo_tasks;

@@ -5,6 +5,9 @@
     <string name="status">Status</string>
     <string name="add_task_button">Add Task</string>
     <string name="remove_task_button">Remove task</string>
+    <string name="description_detail">Description_detail</string>
+    <string name="back_to_list">Back to List</string>
+    <string name="details">Details</string>
 
     <string-array name="task_names">
         <item>Todo</item>
