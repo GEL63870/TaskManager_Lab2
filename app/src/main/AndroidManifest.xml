@@ -19,6 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyAdapter" />
+        <activity android:name=".Adapter" />
+        <activity android:name=".One_Task" />
+
     </application>
+
 </manifest>
