@@ -1,13 +1,14 @@
 package pl.com.pwr.lab2.lab2_257160_taskmanager;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Main_Activity extends AppCompatActivity implements Adapter.OnItemClickListener {
+public class Main_Activity extends AppCompatActivity implements Adapter.OnItemClickListener, AdapterView.OnItemSelectedListener {
     private ArrayList<One_Task> one_task;
 
     private RecyclerView mRecyclerView;
@@ -27,8 +28,8 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
     private static final String[] TASK = new String[] {
             "Todo","Email", "Meeting", "Phone"};
     private Button addButton;
-    private AutoCompleteTextView select_task;
-    private ArrayAdapter<String> adapter;
+    private Spinner select_task;
+    private ArrayAdapter<CharSequence> adapter;
     private EditText new_due_date;
     private EditText new_description;
 
@@ -41,8 +42,10 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
         buildRecyclerView();
 
         select_task = findViewById(R.id.type_task);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, TASK);
+        adapter = ArrayAdapter.createFromResource(this, R.array.task_names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         select_task.setAdapter(adapter);
+        select_task.setOnItemSelectedListener(this);
 
         new_due_date = findViewById(R.id.enter_due_date);
         new_description = findViewById(R.id.enter_description);
@@ -51,11 +54,24 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = select_task.getText().toString();
+                String title = select_task.getItemAtPosition(select_task.getSelectedItemPosition()).toString();
                 String due_date = new_due_date.getText().toString();
                 String description = new_description.getText().toString();
                 int position = 0;
-                add_task(position, title, due_date, description);
+
+                // We select the correct logo for the task after getting the type of task the user wanted to create
+                if (title.equals("Todo")){
+                    add_task_todo(position, title, due_date, description);
+                }
+                else if (title.equals("Email")) {
+                    add_task_email(position, title, due_date, description);
+                }
+                else if (title.equals("Phone")) {
+                    add_task_phone(position, title, due_date, description);
+                }
+                else if (title.equals("Meeting")) {
+                    add_task_meeting(position, title, due_date, description);
+                }
             }
         });
     }
@@ -63,14 +79,29 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
 
     public void createOne_Task() {
         one_task = new ArrayList<>();
-        one_task.add(new One_Task(R.drawable.icon_todo, "My Title", "MyDueDate", "Describe my task", "Test Not Done"));
-        one_task.add(new One_Task(R.drawable.icon_email, "My Title", "MyDueDate", "Describe my task", "Not Done"));
-        one_task.add(new One_Task(R.drawable.icon_phone, "My Title", "MyDueDate", "Describe my task", "Not Done"));
-        one_task.add(new One_Task(R.drawable.icon_meeting, "My Title", "MyDueDate", "Describe my task", "Not Done"));
+        one_task.add(new One_Task(R.drawable.icon_todo, "Todo Example", "23/04/2020", "You read the description of a todo task", "Not Done"));
+        one_task.add(new One_Task(R.drawable.icon_email, "Email Example", "22/03/2020", "You read the description of a email task", "Not Done"));
+        one_task.add(new One_Task(R.drawable.icon_phone, "Phone Example", "21/03/2020", "You read the description of a phone task", "Not Done"));
+        one_task.add(new One_Task(R.drawable.icon_meeting, "Meeting Example", "20/03/2020", "You read the description of a meeting task", "Not Done"));
     }
 
-    public void add_task(int position, String title, String dueDate, String description) {
+    public void add_task_todo(int position, String title, String dueDate, String description) {
         one_task.add(position, new One_Task(R.drawable.icon_todo, title, dueDate, description, "Not Done"));
+        mAdapter.notifyItemInserted(position);
+    }
+
+    public void add_task_email(int position, String title, String dueDate, String description) {
+        one_task.add(position, new One_Task(R.drawable.icon_email, title, dueDate, description, "Not Done"));
+        mAdapter.notifyItemInserted(position);
+    }
+
+    public void add_task_phone(int position, String title, String dueDate, String description) {
+        one_task.add(position, new One_Task(R.drawable.icon_phone, title, dueDate, description, "Not Done"));
+        mAdapter.notifyItemInserted(position);
+    }
+
+    public void add_task_meeting(int position, String title, String dueDate, String description) {
+        one_task.add(position, new One_Task(R.drawable.icon_meeting, title, dueDate, description, "Not Done"));
         mAdapter.notifyItemInserted(position);
     }
 
@@ -154,4 +185,14 @@ public class Main_Activity extends AppCompatActivity implements Adapter.OnItemCl
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String choice = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), "Type" + choice + "selected", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
