@@ -33,7 +33,6 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
         public TextView mTitle;
         public TextView mDueDate;
         public TextView mStatus;
-        public Button mDetail_button;
 
 
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
@@ -42,7 +41,6 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
             mTitle = itemView.findViewById(R.id.task_name_txt);
             mDueDate = itemView.findViewById(R.id.due_date);
             mStatus = itemView.findViewById(R.id.status);
-           // mDetail_button = itemView.findViewById(R.id.button_details);
 
             itemView.setOnClickListener((new View.OnClickListener() {
                 @Override
@@ -56,18 +54,6 @@ public class Adapter extends RecyclerView.Adapter <Adapter.MyViewHolder> {
                     }
                 }
             }));
-
-            //mDetail_button.setOnClickListener(new View.OnClickListener() {
-               // @Override
-              //  public void onClick(View v) {
-                 //   if (listener != null) {
-                  //      int position = getAdapterPosition();
-                  //      if (position != RecyclerView.NO_POSITION) {
-                    //        listener.onDetailClick(position);
-                      //  }
-                //    }
-            //    }
-          //  });
       }
     }
     public Adapter(ArrayList<One_Task> todo_tasks) {
